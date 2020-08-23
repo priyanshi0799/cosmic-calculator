@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script|Vollkorn&display=swap" rel="stylesheet">        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+</head>
+
+<body class="b" onload="display(); general()">
+    <script>
+        
+        var id="";
+        function getId(val){
+            id=val;
+            console.log(id);
+        }   
+        
+        function f(z){
+            var d=parseFloat(document.getElementById("d").value);
+            var m=parseFloat(document.getElementById("m").value);
+            
+            if(id=="o"){
+                d=0;
+            }
+            if(id=="f"){
+                d=1-m;
+            }
+            var x=m*Math.pow((1+z),3);
+            x=x+d;
+            return ((Math.exp(z)/(1+z))*Math.pow(x,-0.5));
+        }
+
+        function g(z){
+            var d=parseFloat(document.getElementById("d").value);
+            var m=parseFloat(document.getElementById("m").value);
+            if(id=="o"){
+                d=0;
+            }
+            if(id=="f"){
+                d=1-m;
+            }
+            var x=m*Math.pow((1+z),3);
+            x=x+d;
+            return (Math.pow(x,-0.5));
+        }
+
+        function h(z){
+            var d=parseFloat(document.getElementById("d").value);
+            var m=parseFloat(document.getElementById("m").value);
+            if(id=="o"){
+                d=0;
+            }
+            if(id=="f"){
+                d=1-m;
+            }
+            var x=m*Math.pow((1+z),3);
+            x=x+d;
+            return ((1/(1+z))*Math.pow(x,-0.5));
+        }
+
+        function general(){
+            //values entered by user
+            var H=parseFloat(document.getElementById("h").value);
+            var z=parseFloat(document.getElementById("z").value);
+            var m=parseFloat(z/2);
+
+
+            //lag_point
+            var lag_point=Array(185);
+            lag_point=[
+                0.007794,
+                0.041067,
+                0.100930,
+                0.187401,
+                0.300488,
+                0.440199,
+                0.606544,
+                0.799535,
+                1.019187,
+                1.265515,
+                1.538536,
+                1.838271,
+                2.164741,
+                2.517970,
+                2.897983,
+                3.304808,
+                3.738474,
+                4.199013,
+                4.686459,
+                5.200847,
+                5.742214,
+                6.310601,
+                6.906049,
+                7.528602,
+                8.178307,
+                8.855210,
+                9.559362,
+                10.290817,
+                11.049627,
+                11.835851,
+                12.649548,
+                13.490777,
+                14.359605,
+                15.256095,
+                16.180317,
+                17.132341,
+                18.112240,
+                19.120090,
+                20.155968,
+                21.219956,
+                22.312136,
+                23.432594,
+                24.581419,
+                25.758700,
+                26.964532,
+                28.199012,
+                29.462237,
+                30.754311,
+                32.075339,
+                33.425427,
+                34.804687,
+                36.213233,
+                37.651182,
+                39.118654,
+                40.615772,
+                42.142664,
+                43.699459,
+                45.286290,
+                46.903295,
+                48.550614,
+                50.228392,
+                51.936776,
+                53.675918,
+                55.445974,
+                57.247104,
+                59.079470,
+                60.943241,
+                62.838589,
+                64.765691,
+                66.724727,
+                68.715883,
+                70.739349,
+                72.795321,
+                74.883998,
+                77.005586,
+                79.160295,
+                81.348340,
+                83.569943,
+                85.825331,
+                88.114736,
+                90.438397,
+                92.796559,
+                95.189472,
+                97.617395,
+                100.080591,
+                102.579333,
+                105.113898,
+                107.684572,
+                110.291648,
+                112.935428,
+                115.616220,
+                118.334343,
+                121.090121,
+                123.883891,
+                126.715997,
+                129.586791,
+                132.496638,
+                135.445912,
+                138.434997,
+                141.464288,
+                144.534192,
+                147.645128,
+                150.797525,
+                153.991828,
+                157.228493,
+                160.507990,
+                163.830804,
+                167.197434,
+                170.608395,
+                174.064217,
+                177.565450,
+                181.112656,
+                184.706421,
+                188.347346,
+                192.036054,
+                195.773188,
+                199.559413,
+                203.395417,
+                207.281911,
+                211.219631,
+                215.209342,
+                219.251833,
+                223.347925,
+                227.498466,
+                231.704340,
+                235.966462,
+                240.285783,
+                244.663294,
+                249.100023,
+                253.597040,
+                258.155462,
+                262.776451,
+                267.461219,
+                272.211033,
+                277.027214,
+                281.911145,
+                286.864271,
+                291.888108,
+                296.984242,
+                302.154339,
+                307.400149,
+                312.723511,
+                318.126360,
+                323.610736,
+                329.178790,
+                334.832796,
+                340.575159,
+                346.408423,
+                352.335291,
+                358.358632,
+                364.481501,
+                370.707152,
+                377.039063,
+                383.480954,
+                390.036813,
+                396.710928,
+                403.507915,
+                410.432761,
+                417.490865,
+                424.688089,
+                432.030818,
+                439.526033,
+                447.181386,
+                455.005309,
+                463.007123,
+                471.197187,
+                479.587069,
+                488.189761,
+                497.019950,
+                506.094348,
+                515.432130,
+                525.055483,
+                534.990348,
+                545.267399,
+                555.923403,
+                567.003123,
+                578.562089,
+                590.670761,
+                603.421089,
+                616.937390,
+                631.395746,
+                647.061988,
+                664.376673,
+                684.189048,
+                708.704917
+            ];
+            
+            //lag_weight
+            var lag_weight=Array(185);
+            lag_weight=[
+                1.984687575159386000*Math.pow(10,-2),
+                4.468917170882284046*Math.pow(10,-2),
+                6.614155557190569412*Math.pow(10,-2),
+                8.272665626399589023*Math.pow(10,-2),
+                9.359165585087582395*Math.pow(10,-2),
+                9.853479410705510977*Math.pow(10,-2),
+                9.795970125367264858*Math.pow(10,-2),
+                9.274820468154090780*Math.pow(10,-2),
+                8.408220739219816886*Math.pow(10,-2),
+                7.325177157188617061*Math.pow(10,-2),
+                6.148327046602618945*Math.pow(10,-2),
+                4.981157978214308807*Math.pow(10,-2),
+                3.900732560340653549*Math.pow(10,-2),
+                2.955776476997185390*Math.pow(10,-2),
+                2.169062593094505872*Math.pow(10,-2),
+                1.542546020908066792*Math.pow(10,-2),
+                1.063661451243674665*Math.pow(10,-2),
+                7.114720790434331428*Math.pow(10,-3),
+                4.618032499281027325*Math.pow(10,-3),
+                2.909570677849203629*Math.pow(10,-3),
+                1.779834377140281998*Math.pow(10,-3),
+                1.057296531415428476*Math.pow(10,-3),
+                6.100329314982979190*Math.pow(10,-4),
+                3.419078679587845616*Math.pow(10,-4),
+                1.861716859635342153*Math.pow(10,-4),
+                9.849339547484463830*Math.pow(10,-5),
+                5.063162119621391065*Math.pow(10,-5),
+                2.529200218176310259*Math.pow(10,-5),
+                1.227751816167222980*Math.pow(10,-5),
+                5.791858298544087911*Math.pow(10,-6),
+                2.655304976882331416*Math.pow(10,-6),
+                1.183054847485242890*Math.pow(10,-6),
+                5.122597931323269804*Math.pow(10,-7),
+                2.155598809426970012*Math.pow(10,-7),
+                8.815195331586967263*Math.pow(10,-8),
+                3.503267540490079948*Math.pow(10,-8),
+                1.352945227608133491*Math.pow(10,-8),
+                5.077362806463049565*Math.pow(10,-9),
+                1.851527961528120566*Math.pow(10,-9),
+                6.560502387505794168*Math.pow(10,-10),
+                2.258588194012826142*Math.pow(10,-10),
+                7.554511123176106867*Math.pow(10,-11),
+                2.454817274403290846*Math.pow(10,-11),
+                7.749034532713598090*Math.pow(10,-12),
+                2.376084125302435152*Math.pow(10,-12),
+                7.076688627785763987*Math.pow(10,-13),
+                2.047004626231661437*Math.pow(10,-13),
+                5.750327774913493461*Math.pow(10,-14),
+                1.568607163449964309*Math.pow(10,-14),
+                4.154747204343688657*Math.pow(10,-15),
+                1.068422613201087545*Math.pow(10,-15),
+                2.667270655451088841*Math.pow(10,-16),
+                6.463569207984227894*Math.pow(10,-17),
+                1.520243083616234794e-17,
+                3.470094213538261017e-18,
+                7.686128385661270329e-19,
+                1.651813220804175783e-19,
+                3.443881649571552568e-20,
+                6.964897856772481774e-21,
+                1.366167759819317897e-21,
+                2.598709627564861203e-22,
+                4.793092362838719313e-23,
+                8.570698057890973697e-24,
+                1.485576829899653746e-24,
+                2.495668169453199062e-25,
+                4.062783848837959754e-26,
+                6.408201345981589833e-27,
+                9.791574795188736268e-28,
+                1.449103129520674206e-28,
+                2.076828896581585727e-29,
+                2.881900848495429986e-30,
+                3.871277615740956259e-31,
+                5.033202919846701250e-32,
+                6.332351892439800449e-33,
+                7.707782698724445364e-34,
+                9.075043202937416447e-35,
+                1.033311713053684321e-35,
+                1.137584194688001783e-36,
+                1.210622952610975973e-37,
+                1.245112056258730608e-38,
+                1.237315695677909363e-39,
+                1.187738398164111414e-40,
+                1.101088189495588345e-41,
+                9.855403444186211691e-43,
+                8.514608997021144065e-44,
+                7.098669685228736536e-45,
+                5.709420198782449568e-46,
+                4.428813803872693041e-47,
+                3.312359626926557988e-48,
+                2.387882925003752406e-49,
+                1.658751659520724481e-50,
+                1.109957017502270874e-51,
+                7.152325893500559279e-53,
+                4.436707249479398922e-54,
+                2.648491483548314113e-55,
+                1.520927618735017903e-56,
+                8.399128048689293826e-58,
+                4.458765522478403570e-59,
+                2.274491532031636350e-60,
+                1.114481813635820286e-61,
+                5.243308259513657556e-63,
+                2.367561054533343751e-64,
+                1.025592194235431669e-65,
+                4.260246846392364035e-67,
+                1.696228837070710576e-68,
+                6.470247191393763571e-70,
+                2.363387835841139413e-71,
+                8.262496956417664982e-73,
+                2.763297359606037847e-74,
+                8.835980409970564994e-76,
+                2.699953137472465560e-77,
+                7.879307167841880326e-79,
+                2.194816475139894929e-80,
+                5.832121442357382128e-82,
+                1.477420894123338108e-83,
+                3.565770512997124361e-85,
+                8.193825780895044189e-87,
+                1.791459847254228545e-88,
+                3.723976532516794184e-90,
+                7.354750406931878296e-92,
+                1.378987579664285214e-93,
+                2.452689115208758424e-95,
+                4.134853797101099800e-97,
+                6.601549629509022726e-99,
+                9.972829485821549209e-101,
+                1.424235209420551471e-102,
+                1.920987325848294261e-104,
+                2.444663544595156910e-106,
+                2.932382884017096241e-108,
+                3.311816236203472544e-110,
+                3.517819228794245249e-112,
+                3.510265105261894861e-114,
+                3.286557168271189904e-116,
+                2.883567734925285885e-118,
+                2.367746689191740510e-120,
+                1.817016588552537292e-122,
+                1.301295456778589378e-124,
+                8.684235171393428427e-127,
+                5.391872487337448809e-129,
+                3.109424483122113893e-131,
+                1.662633811991668780e-133,
+                8.228002658095105945e-136,
+                3.761289648139343307e-138,
+                1.585046802717160215e-140,
+                6.144412238244977831e-143,
+                2.186095873667975917e-145,
+                7.121470550391807353e-148,
+                2.118757980991974086e-150,
+                5.741653674560113764e-153,
+                1.413177224943859680e-155,
+                3.149494339752599794e-158,
+                6.335241896868909620e-161,
+                1.146203926790085375e-163,
+                1.858360695432593582e-166,
+                2.689333928191069375e-169,
+                3.459034205983454490e-172,
+                3.936104380900041938e-175,
+                3.943004301443709963e-178,
+                3.458646735481595889e-181,
+                2.641028458357616050e-184,
+                1.744504288189525084e-187,
+                9.899008387853843615e-191,
+                4.788830710155021318e-194,
+                1.958616239701683172e-197,
+                6.710129681112051643e-201,
+                1.905935016208229192e-204,
+                4.437049027413111985e-208,
+                8.357760737535692956e-212,
+                1.255360205706850835e-215,
+                1.478872493848063403e-219,
+                1.340670463254851588e-223,
+                9.149393437332150495e-228,
+                4.581230956560558114e-232,
+                1.632679893573114885e-236,
+                3.993447429596988568e-241,
+                6.413528114920891423e-246,
+                6.401996431139156543e-251,
+                3.704993373049992777e-256,
+                1.135336410805987216e-261,
+                1.629820791820354816e-267,
+                9.217668590325323181e-274,
+                1.582217253504509875e-280,
+                5.356378161829050941e-288,
+                1.564172258868984405e-296,
+                4.689971870253194091e-307
+            ];
+            
+            //leg_weight
+            var leg_weight=Array(185);
+            leg_weight=[
+                0.000216,
+                0.000502,
+                0.000788,
+                0.001075,
+                0.001361,
+                0.001647,
+                0.001932,
+                0.002216,
+                0.002501,
+                0.002784,
+                0.003066,
+                0.003348,
+                0.003629,
+                0.003908,
+                0.004187,
+                0.004464,
+                0.004740,
+                0.005015,
+                0.005288,
+                0.005560,
+                0.005830,
+                0.006098,
+                0.006365,
+                0.006630,
+                0.006893,
+                0.007154,
+                0.007413,
+                0.007669,
+                0.007924,
+                0.008176,
+                0.008426,
+                0.008674,
+                0.008919,
+                0.009162,
+                0.009402,
+                0.009639,
+                0.009873,
+                0.010105,
+                0.010334,
+                0.010559,
+                0.010782,
+                0.011002,
+                0.011218,
+                0.011431,
+                0.011641,
+                0.011848,
+                0.012051,
+                0.012251,
+                0.012447,
+                0.012640,
+                0.012829,
+                0.013014,
+                0.013196,
+                0.013374,
+                0.013548,
+                0.013718,
+                0.013884,
+                0.014047,
+                0.014205,
+                0.014359,
+                0.014509,
+                0.014655,
+                0.014796,
+                0.014934,
+                0.015067,
+                0.015196,
+                0.015320,
+                0.015440,
+                0.015556,
+                0.015667,
+                0.015774,
+                0.015876,
+                0.015973,
+                0.016067,
+                0.016155,
+                0.016239,
+                0.016318,
+                0.016392,
+                0.016462,
+                0.016527,
+                0.016587,
+                0.016643,
+                0.016693,
+                0.016739,
+                0.016781,
+                0.016817,
+                0.016848,
+                0.016875,
+                0.016897,
+                0.016914,
+                0.016926,
+                0.016933,
+                0.016936,
+                0.016933,
+                0.016926,
+                0.016914,
+                0.016897,
+                0.016875,
+                0.016848,
+                0.016817,
+                0.016781,
+                0.016739,
+                0.016693,
+                0.016643,
+                0.016587,
+                0.016527,
+                0.016462,
+                0.016392,
+                0.016318,
+                0.016239,
+                0.016155,
+                0.016067,
+                0.015973,
+                0.015876,
+                0.015774,
+                0.015667,
+                0.015556,
+                0.015440,
+                0.015320,
+                0.015196,
+                0.015067,
+                0.014934,
+                0.014796,
+                0.014655,
+                0.014509,
+                0.014359,
+                0.014205,
+                0.014047,
+                0.013884,
+                0.013718,
+                0.013548,
+                0.013374,
+                0.013196,
+                0.013014,
+                0.012829,
+                0.012640,
+                0.012447,
+                0.012251,
+                0.012051,
+                0.011848,
+                0.011641,
+                0.011431,
+                0.011218,
+                0.011002,
+                0.010782,
+                0.010559,
+                0.010334,
+                0.010105,
+                0.009873,
+                0.009639,
+                0.009402,
+                0.009162,
+                0.008919,
+                0.008674,
+                0.008426,
+                0.008176,
+                0.007924,
+                0.007669,
+                0.007413,
+                0.007154,
+                0.006893,
+                0.006630,
+                0.006365,
+                0.006098,
+                0.005830,
+                0.005560,
+                0.005288,
+                0.005015,
+                0.004740,
+                0.004464,
+                0.004187,
+                0.003908,
+                0.003629,
+                0.003348,
+                0.003066,
+                0.002784,
+                0.002501,
+                0.002216,
+                0.001932,
+                0.001647,
+                0.001361,
+                0.001075,
+                0.000788,
+                0.000502,
+                0.000216,
+            ]
+
+            //leg_point
+            var leg_point=Array(185);
+            leg_point=[
+            parseFloat(-0.999916),
+            parseFloat(-0.999557),
+            parseFloat(-0.998912),
+            parseFloat(-0.997980),
+            parseFloat(-0.996762),
+            parseFloat(-0.995259),
+            parseFloat(-0.993469),
+            parseFloat(-0.991395),
+            parseFloat(-0.989037),
+            parseFloat(-0.986394),
+            parseFloat(-0.983469),
+            parseFloat(-0.980262),
+            parseFloat(-0.976774),
+            parseFloat(-0.973005),
+            parseFloat(-0.968958),
+            parseFloat(-0.964632),
+            parseFloat(-0.960030),
+            parseFloat(-0.955152),
+            parseFloat(-0.950001),
+            parseFloat(-0.944577),
+            parseFloat(-0.938882),
+            parseFloat(-0.932918),
+            parseFloat(-0.926686),
+            parseFloat(-0.920189),
+            parseFloat(-0.913427),
+            parseFloat(-0.906404),
+            parseFloat(-0.899120),
+            parseFloat(-0.891579),
+            parseFloat(-0.883782),
+            parseFloat(-0.875732),
+            parseFloat(-0.867430),
+            parseFloat(-0.858880),
+            parseFloat(-0.850083),
+            parseFloat(-0.841042),
+            parseFloat(-0.831761),
+            parseFloat(-0.822240),
+            parseFloat(-0.812484),
+            parseFloat(-0.802495),
+            parseFloat(-0.792275),
+            parseFloat(-0.781829),
+            parseFloat(-0.771158),
+            parseFloat(-0.760266),
+            parseFloat(-0.749156),
+            parseFloat(-0.737831),
+            parseFloat(-0.726294),
+            parseFloat(-0.714549),
+            parseFloat(-0.702599),
+            parseFloat(-0.690448),
+            parseFloat(-0.678098),
+            parseFloat(-0.665555),
+            parseFloat(-0.652820),
+            parseFloat(-0.639898),
+            parseFloat(-0.626792),
+            parseFloat(-0.613507),
+            parseFloat(-0.600046),
+            parseFloat(-0.586412),
+            parseFloat(-0.572611),
+            parseFloat(-0.558645),
+            parseFloat(-0.544519),
+            parseFloat(-0.530236),
+            parseFloat(-0.515802),
+            parseFloat(-0.501220),
+            parseFloat(-0.486494),
+            parseFloat(-0.471628),
+            parseFloat(-0.456628),
+            parseFloat(-0.441496),
+            parseFloat(-0.426237),
+            parseFloat(-0.410857),
+            parseFloat(-0.395358),
+            parseFloat(-0.379746),
+            parseFloat(-0.364026),
+            parseFloat(-0.348200),
+            parseFloat(-0.332275),
+            parseFloat(-0.316255),
+            parseFloat(-0.300144),
+            parseFloat(-0.283947),
+            parseFloat(-0.267668),
+            parseFloat(-0.251313),
+            parseFloat(-0.234885),
+            parseFloat(-0.218390),
+            parseFloat(-0.201833),
+            parseFloat(-0.185218),
+            parseFloat(-0.168549),
+            parseFloat(-0.151832),
+            parseFloat(-0.135072),
+            parseFloat(-0.118273),
+            parseFloat(-0.101440),
+            parseFloat(-0.084578),
+            parseFloat(-0.067691),
+            parseFloat(-0.050785),
+            parseFloat(-0.033865),
+            parseFloat(-0.016935),
+            0.000000,
+            0.016935,
+            0.033865,
+            0.050785,
+            0.067691,
+            0.084578,
+            0.101440,
+            0.118273,
+            0.135072,
+            0.151832,
+            0.168549,
+            0.185218,
+            0.201833,
+            0.218390,
+            0.234885,
+            0.251313,
+            0.267668,
+            0.283947,
+            0.300144,
+            0.316255,
+            0.332275,
+            0.348200,
+            0.364026,
+            0.379746,
+            0.395358,
+            0.410857,
+            0.426237,
+            0.441496,
+            0.456628,
+            0.471628,
+            0.486494,
+            0.501220,
+            0.515802,
+            0.530236,
+            0.544519,
+            0.558645,
+            0.572611,
+            0.586412,
+            0.600046,
+            0.613507,
+            0.626792,
+            0.639898,
+            0.652820,
+            0.665555,
+            0.678098,
+            0.690448,
+            0.702599,
+            0.714549,
+            0.726294,
+            0.737831,
+            0.749156,
+            0.760266,
+            0.771158,
+            0.781829,
+            0.792275,
+            0.802495,
+            0.812484,
+            0.822240,
+            0.831761,
+            0.841042,
+            0.850083,
+            0.858880,
+            0.867430,
+            0.875732,
+            0.883782,
+            0.891579,
+            0.899120,
+            0.906404,
+            0.913427,
+            0.920189,
+            0.926686,
+            0.932918,
+            0.938882,
+            0.944577,
+            0.950001,
+            0.955152,
+            0.960030,
+            0.964632,
+            0.968958,
+            0.973005,
+            0.976774,
+            0.980262,
+            0.983469,
+            0.986394,
+            0.989037,
+            0.991395,
+            0.993469,
+            0.995259,
+            0.996762,
+            0.997980,
+            0.998912,
+            0.999557,
+            0.999916
+            ]
+
+
+            //I1 computation
+            var i1=0;
+            for(var i=0;i<185;i++){
+                i1=i1+lag_weight[i]*f(lag_point[i]);
+            }
+            var H1;
+            H1=H/976.36;
+            i1=i1/H1;
+            
+            document.getElementById("gI1").innerHTML="It is now "+i1.toPrecision(5)+" Gyr since the Big Bang.";
+
+            
+            //I2 computation
+            var i2=0;
+            for(var i=0;i<185;i++){
+                i2=i2+(leg_weight[i]*h(leg_point[i]*m+m));
+            }
+            i2=m*i2;
+            var H2;
+            H2=H/976.36;
+            i2=i2/H2;
+            
+            document.getElementById("gI2").innerHTML="The age at redshift z was "+(i1.toPrecision(5)-i2.toPrecision(5)).toPrecision(5)+" Gyr."
+            document.getElementById("gI3").innerHTML="The light travel time was "+i2.toPrecision(5)+" Gyr.";
+
+            //I3 computation
+            var i3=0;
+            for(var i=0;i<185;i++){
+                i3=i3+(leg_weight[i]*g((leg_point[i]*m)+m));
+            }
+
+            i3=i3*m;
+            i3=(299376/H)*i3;
+            i3=i3.toPrecision(5);
+            document.getElementById("gI4").innerHTML="The comoving radial distance, which goes into Hubble's law, is "+i3+" Mpc.";
+
+            // document.getElementById("gI5").innerHTML="The comoving volume within redshift z is "+(Math.pow(10,9)/((4/3)*3.14*(Math.pow(i3,3)))).toPrecision(5)+" Gpc3."
+            document.getElementById("gI5").innerHTML="The angular size distance D<sub>A</sub> is "+i3/(1+z)+" Mpc";
+            document.getElementById("gI6").innerHTML="The luminosity distance D<sub>L</sub> is "+(1+z)*i3+" Mpc."
+        }
+
+        function display(){
+            var H=parseFloat(document.getElementById("h").value);
+            var z=parseFloat(document.getElementById("z").value);
+            var d=parseFloat(document.getElementById("d").value);
+            var m=parseFloat(document.getElementById("m").value);
+
+            
+
+            if(id=="o"){
+                document.getElementById("vals").innerHTML="For Ho = "+H+" ,&#8486;<sub>M</sub> = "+m+" ,&#8486;<sub>DE</sub> = "+"0"+" and z = "+z;
+            }
+            if(id=="f"){
+                document.getElementById("vals").innerHTML="For Ho = "+H+" ,&#8486;<sub>M</sub> = "+m+" ,&#8486;<sub>DE</sub> = "+(1-m)+" and z = "+z;
+            }
+            else
+                document.getElementById("vals").innerHTML="For Ho = "+H+" ,&#8486;<sub>M</sub> = "+m+" ,&#8486;<sub>DE</sub> = "+d+" and z = "+z;
+            
+        }  
+
+        
+
+    </script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg mt-3 ml-5">
+                <div class="card" style="width: 45rem;">
+                    <div class="card-header">
+                        <h3>Enter values and hit the button</h3>
+                    </div>    
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="form-group">
+                                <label style='font-size:50px;'>H<sub>o</sub></label>
+                                <input type="text" id="h" class="form-control" placeholder="Enter the value" value="69.6" >
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="form-group">
+                                <label style='font-size:50px;'>&#8486;<sub>M</sub></label>
+                                <input type="text" class="form-control" placeholder="Enter the value" value="0.286" id="m">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-group">
+                                <label style='font-size:40px;'>z</label>
+                                <input type="text" class="form-control" placeholder="Enter the value" value="3" id="z">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="text-center">
+                                <button type="button" id="o" onclick="getId(this.id); general(); display();" data-toggle="tooltip" data-html="true"
+                                title="Open sets &#8486;(DE) = 0 giving an open Universe [if you entered &#8486;(M) &lt; 1]" 
+                                class="btn btn-primary mt-1 btn-lg mr-3 b1">
+                                    Open
+                                </button>
+                
+                                <button type="button" id="f" onclick=" getId(this.id); general(); display();" data-toggle="tooltip" data-html="true" 
+                                title="Flat sets &#8486;(DE) = 1-&#8486;(M) giving a flat Universe." 
+                                class="btn btn-primary mt-1 btn-lg ml-3 b1">
+                                    Flat
+                                </button>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-group">
+                                <label style='font-size:50px;'>&#8486;<sub>DE</sub></label>
+                                <input type="text" class="form-control" placeholder="Enter the value" value="0.714" id="d">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="text-center">
+                                <button type="button" id ="g" onclick="getId(this.id); general(); display();" data-toggle="tooltip" data-html="true" 
+                                title="General uses the &#8486;(DE) that you entered." class="btn btn-primary mt-1 btn-lg mr-3 b1">
+                                General</button>
+                            </div>
+                        </li>
+                    </ul>    
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg mt-3 mr-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                            <h3 id="vals"></h3>
+                            </div>
+                            <div class="card-body">
+                            <h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" id="gI1"></li>
+                                    <li class="list-group-item" id="gI2"></li>
+                                    <li class="list-group-item" id="gI3"></li>
+                                    <li class="list-group-item" id="gI4"></li>
+                                    <li class="list-group-item" id="gI5"></li>
+                                    <li class="list-group-item" id="gI6"></li>
+                                </ul>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                            <h3>Meaning of Symbols used</h3>
+                            </div>
+                            <div class="card-body">
+                            <h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                       <b>Ho:</b>  Current value of Hubble's parameter.
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>&#8486;<sub>M</sub>: </b>Current value of energy density of matter.
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>&#8486;<sub>DE</sub>: </b>Current value of Dark-energy density.
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>z: </b>Redshift.
+                                    </li>
+                                    
+                                </ul>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                            <h3>Note to Amateurs:</h3>
+                            <h4>Results will be correct only when &#8486;<sub>M</sub>+&#8486;<sub>DE</sub> is close to 1. </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+</body>
+</html>

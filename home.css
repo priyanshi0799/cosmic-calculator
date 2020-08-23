@@ -1,0 +1,24 @@
+.bg{
+    background-image: url('./m1.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.p1{
+    font-family: 'Vollkorn', serif;
+    color: white;
+    text-align: center;
+}
+
+.p2{
+    font-family: 'Oleo Script', cursive;
+    color: white;
+    font-size: 30px;
+    text-align: justify;
+}
+
+.b1{
+    color: black;
+    font-family: 'Oleo Script', cursive;
+    font-size: 30px;   
+}
